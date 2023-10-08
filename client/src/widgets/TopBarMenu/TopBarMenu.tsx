@@ -1,17 +1,29 @@
 import * as React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Menu as MenuIcon, Adb as AdbIcon } from '@mui/icons-material';
-import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem } from '@mui/material';
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+  // Avatar,
+  Button,
+  // Tooltip,
+  MenuItem,
+} from '@mui/material';
 
 import { pages } from '../../constants';
 
 import { homeTitleSx } from './styles';
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export const TopBarMenu = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  // const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
   const currentLocation = useLocation();
 
@@ -20,17 +32,18 @@ export const TopBarMenu = () => {
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
+
+  // const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorElUser(event.currentTarget);
+  // };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  // const handleCloseUserMenu = () => {
+  //   setAnchorElUser(null);
+  // };
 
   return (
     <AppBar position='static' sx={{ bgcolor: 'common.white' }}>
@@ -95,22 +108,24 @@ export const TopBarMenu = () => {
               },
             }}
           >
-            {pages.map(({ title, disabled }) => (
-              <Button
-                key={title}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, display: 'block' }}
-                size='large'
-                href={title}
-                disabled={disabled}
-                variant={decodedPathname === title ? 'contained' : 'text'}
-              >
-                {title}
-              </Button>
-            ))}
+            {pages.map(
+              ({ title, disabled, hidden }) =>
+                !hidden && (
+                  <Button
+                    key={title}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, display: 'block', textShadow: decodedPathname === title ? '0px 0px 2px rgba(0,0,0,0.6)' : 'unset' }}
+                    size='large'
+                    href={title}
+                    disabled={disabled}
+                  >
+                    {title}
+                  </Button>
+                )
+            )}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title='Open settings'>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt='Rodrick Sharp' />
@@ -118,7 +133,6 @@ export const TopBarMenu = () => {
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
-              id='menu-appbar'
               anchorEl={anchorElUser}
               anchorOrigin={{
                 vertical: 'top',
@@ -138,7 +152,7 @@ export const TopBarMenu = () => {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>

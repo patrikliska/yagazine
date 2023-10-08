@@ -4,4 +4,5 @@ export enum Pages {
   ZvzSsLogger = 'ZvZ & SS Logger',
   GuildBuyOrders = 'Guild - buy orders',
   GuildActivity = 'Guild activity',
+  Crafting = 'Crafting calculator',
 }

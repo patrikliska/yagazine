@@ -28,10 +28,11 @@ export const defaultTheme = createTheme({
 
 export const pages = [
   { title: Pages.Prices },
-  { title: Pages.GuildBuyOrders, disabled: true },
-  { title: Pages.ZvzMagazine, disabled: true },
+  { title: Pages.Crafting },
+  { title: Pages.GuildBuyOrders, disabled: true, hidden: true },
+  { title: Pages.ZvzMagazine, disabled: true, hidden: true },
   { title: Pages.ZvzSsLogger, disabled: true },
-  { title: Pages.GuildActivity, disabled: true },
+  { title: Pages.GuildActivity, disabled: true, hidden: true },
 ];
 
 export const menuPages: RouteObject[] = [
